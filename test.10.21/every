@@ -1,0 +1,54 @@
+第一题：
+
+    <div id="a">
+         thankyou
+    </div>
+    <script>
+        document.getElementById('a');
+    var str ='thank';
+    var str ='you';
+  var a= console.log('thank'.concat('you'));
+    
+    
+    
+    </script>
+
+第二题：
+   <div id="a">
+
+    </div>
+    <script>
+      var a =document.getElementById('a');
+      var a = String(prompt(请输入要存储的钱单位:万))
+      innerhtml= h2
+    
+    
+    
+    
+    </script>
+    
+    第三题：
+        <script>
+    var str = '79387.348'
+    var nstr1 =str.substr(0,8);
+    console.log(nstr1);
+    
+    </script>
+    
+    第五题：
+                <input type="text" id="a">
+
+            <button id="c">登录<botton>
+            <script>
+                    var a = document.getElementById('a');
+                    var c = document.getElementById('c');
+                    c.onclick = function(){
+                        var av = a.value;
+                        if(a.value!=null){
+                            toLowerCase('a.value');
+                        }else{
+                            toUpperCase('a.value');
+                        }
+                    }
+            </script>
+        
