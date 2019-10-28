@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+          div>img{
+              width:600px;
+              height:400px;
+          }
+         .big{
+             width:800px;
+             height:600px;
+             border:1px solid green ;
+             margin-left:900px;
+             margin-top:-460px;
+             display: none;
+         }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #d5d5d5;
+        }
+
+        .tab {
+            width: 600px;
+            height: 400px;
+            margin-left:100px;
+            position: relative;
+            box-shadow: 5px 5px 8px #333;
+        }
+
+        .pic {
+            width: 600px;
+            height: 400px;
+         margin-top:190px;
+        }
+
+        .pic>div {
+            display: none;
+        }
+
+        .num {
+            position: absolute;
+            width: 220px;
+            right: 0;
+            bottom: -100px;
+            right:140px;
+        }
+
+        .num a {
+            width: 20px;
+            height: 30px;
+            text-decoration: none;
+            text-align: center;
+            line-height: 30px;
+            font-size: 13px;
+            display: inline-block;
+            background-color: #222;
+            color: white;
+            box-shadow: 0 0 4px #ddd;
+            margin-left: 8px;
+        }
+
+        .control {
+            color: white;
+            font-size: 50px;
+            width: 100%;
+            position: absolute;
+            z-index: 30px;
+            top: 160px;
+            overflow: hidden;
+            
+        }
+
+        .control span {
+            display: block;
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            line-height: 55px;
+            cursor: pointer;
+            background-color:black;
+            margin-top:290px;
+        }
+
+        .control span:nth-child(1) {
+            float: left;   
+        }
+
+        .control span:nth-child(2) {
+            float: right;
+        }
+
+        .num .active {
+            background-color: #bbb;
+            box-shadow: 0 0 5px #333;
+            transform: scale(1.1);
+            color: #222;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="tab">
+        <div class="pic" id="pic">
+            <div style="display: block;">
+                <img src="img/0.jpg" alt="">
+            </div>
+            <div>
+                <img src="img/1.jpg" alt="">
+            </div>
+            <div>
+                <img src="img/2.jpg" alt="">
+            </div>
+            <div>
+                <img src="img/3.jpg" alt="">
+            </div>
+           <div>
+                <img src="img/4.jpg" alt="">
+            </div>
+            <div>
+                <img src="img/5.jpg" alt="">
+            </div> 
+        </div>
+        <div class="num" id="num">
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a> 
+            <a href="#">6</a> 
+        </div>
+        <div class="control">
+            <span id="l">&lt;</span>
+            <span id="r">&gt;</span>
+        </div>
+    </div>
+    <div class="big" id="big">
+
+    </div>
+
+    <script>
+        var num = document.getElementById('num');
+        var pics = document.getElementById('pic');
+        var 左 = document.getElementById('l');
+        var 右 = document.getElementById('r');
+        var as = num.getElementsByTagName('a'); 
+        var picdiv = pics.getElementsByTagName('div');
+        var big= document.getElementById('big'); 
+        var 数字 = 0;
+
+        for (var i = 0; i < as.length; i++) {
+            as[i].setAttribute('z', i); 
+            as[i].onclick = function () {
+                for (var j = 0; j < as.length; j++) {
+                    as[j].className = '';  
+                    picdiv[j].style.display = 'none';
+                }
+                this.className = 'active';
+                picdiv[this.getAttribute('z')].style.display = 'block';
+                数字=this.getAttribute('z');
+                
+            }
+        }
+        右.onclick = function () {
+            数字++; 
+         
+            if(数字 == as.length){
+                数字 = 0;
+            }
+            for (var j = 0; j < as.length; j++) {
+                as[j].className = '';
+                picdiv[j].style.display = 'none';
+            }
+            as[数字].className = 'active';
+            picdiv[数字].style.display = 'block';
+            big.style.backgroundImage='url(img/'+数字+'.jpg)';
+        }
+
+ 
+        左.onclick = function () {
+            数字--;
+            if(数字 == -1){
+                数字 = picdiv.length-1;
+            }
+            for (var j = 0; j < as.length; j++) {
+                as[j].className = '';
+                picdiv[j].style.display = 'none';
+            }
+            as[数字].className = 'active';
+            picdiv[数字].style.display = 'block';
+            big.style.backgroundImage='url(img/'+数字+'.jpg)';
+        }
+         pic.onmousemove=function(){
+                big.style.display='block';
+         }
+         pic.onmouseleave=function(){
+             big.style.display='none';
+         }
+        
+    </script>
+</body>
+
+</html>
